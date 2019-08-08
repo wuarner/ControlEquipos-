@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="controlequiposModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="caracteristicas">
+    <Key>
+      <PropertyRef Name="id_caract" />
+    </Key>
+    <Property Name="id_caract" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_caract" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="und_medida" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dominios">
+    <Key>
+      <PropertyRef Name="tipo_dominio" />
+      <PropertyRef Name="id_dominio" />
+    </Key>
+    <Property Name="tipo_dominio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="id_dominio" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="vlr_dominio" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="equipos">
+    <Key>
+      <PropertyRef Name="serial_equipo" />
+    </Key>
+    <Property Name="serial_equipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="nro_equipo" Type="int" Nullable="false" />
+    <Property Name="tipo_equipo" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="id_marca" Type="int" Nullable="false" />
+    <Property Name="id_sala" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'controlequipos.dbo.equipos_caract' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="equipos_caract">
+    <Key>
+      <PropertyRef Name="serial_equipo" />
+      <PropertyRef Name="id_caract" />
+      <PropertyRef Name="valor_desc" />
+    </Key>
+    <Property Name="serial_equipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="id_caract" Type="int" Nullable="false" />
+    <Property Name="valor_desc" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'controlequipos.dbo.equipos_software' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="equipos_software">
+    <Key>
+      <PropertyRef Name="serial_equipo" />
+      <PropertyRef Name="id_software" />
+    </Key>
+    <Property Name="serial_equipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="id_software" Type="int" Nullable="false" />
+    <Property Name="version_software" Type="varchar" MaxLength="20" />
+    <Property Name="vigencia" Type="date" />
+  </EntityType>
+  <EntityType Name="marcas">
+    <Key>
+      <PropertyRef Name="id_marca" />
+    </Key>
+    <Property Name="id_marca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_marca" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="perifericos">
+    <Key>
+      <PropertyRef Name="serial_perif" />
+    </Key>
+    <Property Name="serial_perif" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="tipo_perif" Type="varchar" MaxLength="5" />
+    <Property Name="serial_equipo" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="personas">
+    <Key>
+      <PropertyRef Name="id_persona" />
+    </Key>
+    <Property Name="id_persona" Type="numeric" Precision="15" Scale="0" Nullable="false" />
+    <Property Name="ape_persona" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom_persona" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tel_persona" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="email_persona" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tipo_persona" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="contrasena" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="salas">
+    <Key>
+      <PropertyRef Name="id_sala" />
+    </Key>
+    <Property Name="id_sala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_sala" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="piso" Type="int" Nullable="false" />
+    <Property Name="capacidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="software">
+    <Key>
+      <PropertyRef Name="id_software" />
+    </Key>
+    <Property Name="id_software" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_software" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cod_licencia" Type="varchar" MaxLength="100" />
+    <Property Name="tipo_licencia" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'controlequipos.dbo.solicitud_equipo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="solicitud_equipo">
+    <Key>
+      <PropertyRef Name="serial_equipo" />
+      <PropertyRef Name="nro_solicitud" />
+      <PropertyRef Name="det_solicitud" />
+    </Key>
+    <Property Name="serial_equipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="nro_solicitud" Type="int" Nullable="false" />
+    <Property Name="det_solicitud" Type="varchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <EntityType Name="solicitudes">
+    <Key>
+      <PropertyRef Name="nro_solicitud" />
+    </Key>
+    <Property Name="nro_solicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_solicitud" Type="date" Nullable="false" />
+    <Property Name="fecha_atencion" Type="date" />
+    <Property Name="fecha_cierre" Type="date" />
+    <Property Name="obs_solicitud" Type="varchar" MaxLength="600" />
+    <Property Name="tipo_solicitud" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="id_persona_sol" Type="numeric" Precision="15" Scale="0" Nullable="false" />
+    <Property Name="id_persona_ati" Type="numeric" Precision="15" Scale="0" />
+  </EntityType>
+  <Association Name="FK__equipos__id_marc__5535A963">
+    <End Role="marcas" Type="Self.marcas" Multiplicity="1" />
+    <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marcas">
+        <PropertyRef Name="id_marca" />
+      </Principal>
+      <Dependent Role="equipos">
+        <PropertyRef Name="id_marca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__equipos__id_sala__5629CD9C">
+    <End Role="salas" Type="Self.salas" Multiplicity="1" />
+    <End Role="equipos" Type="Self.equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salas">
+        <PropertyRef Name="id_sala" />
+      </Principal>
+      <Dependent Role="equipos">
+        <PropertyRef Name="id_sala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__equipos_c__id_ca__60A75C0F">
+    <End Role="caracteristicas" Type="Self.caracteristicas" Multiplicity="1" />
+    <End Role="equipos_caract" Type="Self.equipos_caract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caracteristicas">
+        <PropertyRef Name="id_caract" />
+      </Principal>
+      <Dependent Role="equipos_caract">
+        <PropertyRef Name="id_caract" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__equipos_c__seria__5FB337D6">
+    <End Role="equipos" Type="Self.equipos" Multiplicity="1" />
+    <End Role="equipos_caract" Type="Self.equipos_caract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipos">
+        <PropertyRef Name="serial_equipo" />
+      </Principal>
+      <Dependent Role="equipos_caract">
+        <PropertyRef Name="serial_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__equipos_s__id_so__6383C8BA">
+    <End Role="software" Type="Self.software" Multiplicity="1" />
+    <End Role="equipos_software" Type="Self.equipos_software" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="software">
+        <PropertyRef Name="id_software" />
+      </Principal>
+      <Dependent Role="equipos_software">
+        <PropertyRef Name="id_software" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__equipos_s__seria__628FA481">
+    <End Role="equipos" Type="Self.equipos" Multiplicity="1" />
+    <End Role="equipos_software" Type="Self.equipos_software" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipos">
+        <PropertyRef Name="serial_equipo" />
+      </Principal>
+      <Dependent Role="equipos_software">
+        <PropertyRef Name="serial_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__periferic__seria__693CA210">
+    <End Role="equipos" Type="Self.equipos" Multiplicity="1" />
+    <End Role="perifericos" Type="Self.perifericos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipos">
+        <PropertyRef Name="serial_equipo" />
+      </Principal>
+      <Dependent Role="perifericos">
+        <PropertyRef Name="serial_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solicitud__id_pe__5CD6CB2B">
+    <End Role="personas" Type="Self.personas" Multiplicity="1" />
+    <End Role="solicitudes" Type="Self.solicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personas">
+        <PropertyRef Name="id_persona" />
+      </Principal>
+      <Dependent Role="solicitudes">
+        <PropertyRef Name="id_persona_sol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solicitud__id_pe__5DCAEF64">
+    <End Role="personas" Type="Self.personas" Multiplicity="0..1" />
+    <End Role="solicitudes" Type="Self.solicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personas">
+        <PropertyRef Name="id_persona" />
+      </Principal>
+      <Dependent Role="solicitudes">
+        <PropertyRef Name="id_persona_ati" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solicitud__nro_s__66603565">
+    <End Role="solicitudes" Type="Self.solicitudes" Multiplicity="1" />
+    <End Role="solicitud_equipo" Type="Self.solicitud_equipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="solicitudes">
+        <PropertyRef Name="nro_solicitud" />
+      </Principal>
+      <Dependent Role="solicitud_equipo">
+        <PropertyRef Name="nro_solicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solicitud__seria__656C112C">
+    <End Role="equipos" Type="Self.equipos" Multiplicity="1" />
+    <End Role="solicitud_equipo" Type="Self.solicitud_equipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipos">
+        <PropertyRef Name="serial_equipo" />
+      </Principal>
+      <Dependent Role="solicitud_equipo">
+        <PropertyRef Name="serial_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="controlequiposModelStoreContainer">
+    <EntitySet Name="caracteristicas" EntityType="Self.caracteristicas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dominios" EntityType="Self.dominios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="equipos" EntityType="Self.equipos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="marcas" EntityType="Self.marcas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="perifericos" EntityType="Self.perifericos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="personas" EntityType="Self.personas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salas" EntityType="Self.salas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="software" EntityType="Self.software" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="solicitudes" EntityType="Self.solicitudes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="equipos_caract" EntityType="Self.equipos_caract" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [equipos_caract].[serial_equipo] AS [serial_equipo], 
+    [equipos_caract].[id_caract] AS [id_caract], 
+    [equipos_caract].[valor_desc] AS [valor_desc]
+    FROM [dbo].[equipos_caract] AS [equipos_caract]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="equipos_software" EntityType="Self.equipos_software" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [equipos_software].[serial_equipo] AS [serial_equipo], 
+    [equipos_software].[id_software] AS [id_software], 
+    [equipos_software].[version_software] AS [version_software], 
+    [equipos_software].[vigencia] AS [vigencia]
+    FROM [dbo].[equipos_software] AS [equipos_software]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="solicitud_equipo" EntityType="Self.solicitud_equipo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [solicitud_equipo].[serial_equipo] AS [serial_equipo], 
+    [solicitud_equipo].[nro_solicitud] AS [nro_solicitud], 
+    [solicitud_equipo].[det_solicitud] AS [det_solicitud]
+    FROM [dbo].[solicitud_equipo] AS [solicitud_equipo]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__equipos__id_marc__5535A963" Association="Self.FK__equipos__id_marc__5535A963">
+      <End Role="marcas" EntitySet="marcas" />
+      <End Role="equipos" EntitySet="equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__equipos__id_sala__5629CD9C" Association="Self.FK__equipos__id_sala__5629CD9C">
+      <End Role="salas" EntitySet="salas" />
+      <End Role="equipos" EntitySet="equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__equipos_c__id_ca__60A75C0F" Association="Self.FK__equipos_c__id_ca__60A75C0F">
+      <End Role="caracteristicas" EntitySet="caracteristicas" />
+      <End Role="equipos_caract" EntitySet="equipos_caract" />
+    </AssociationSet>
+    <AssociationSet Name="FK__equipos_c__seria__5FB337D6" Association="Self.FK__equipos_c__seria__5FB337D6">
+      <End Role="equipos" EntitySet="equipos" />
+      <End Role="equipos_caract" EntitySet="equipos_caract" />
+    </AssociationSet>
+    <AssociationSet Name="FK__equipos_s__id_so__6383C8BA" Association="Self.FK__equipos_s__id_so__6383C8BA">
+      <End Role="software" EntitySet="software" />
+      <End Role="equipos_software" EntitySet="equipos_software" />
+    </AssociationSet>
+    <AssociationSet Name="FK__equipos_s__seria__628FA481" Association="Self.FK__equipos_s__seria__628FA481">
+      <End Role="equipos" EntitySet="equipos" />
+      <End Role="equipos_software" EntitySet="equipos_software" />
+    </AssociationSet>
+    <AssociationSet Name="FK__periferic__seria__693CA210" Association="Self.FK__periferic__seria__693CA210">
+      <End Role="equipos" EntitySet="equipos" />
+      <End Role="perifericos" EntitySet="perifericos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solicitud__id_pe__5CD6CB2B" Association="Self.FK__solicitud__id_pe__5CD6CB2B">
+      <End Role="personas" EntitySet="personas" />
+      <End Role="solicitudes" EntitySet="solicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solicitud__id_pe__5DCAEF64" Association="Self.FK__solicitud__id_pe__5DCAEF64">
+      <End Role="personas" EntitySet="personas" />
+      <End Role="solicitudes" EntitySet="solicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solicitud__nro_s__66603565" Association="Self.FK__solicitud__nro_s__66603565">
+      <End Role="solicitudes" EntitySet="solicitudes" />
+      <End Role="solicitud_equipo" EntitySet="solicitud_equipo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solicitud__seria__656C112C" Association="Self.FK__solicitud__seria__656C112C">
+      <End Role="equipos" EntitySet="equipos" />
+      <End Role="solicitud_equipo" EntitySet="solicitud_equipo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

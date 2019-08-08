@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="controlequiposModelStoreContainer" CdmEntityContainer="controlequiposEntities">
+    <EntitySetMapping Name="caracteristicas">
+      <EntityTypeMapping TypeName="controlequiposModel.caracteristicas">
+        <MappingFragment StoreEntitySet="caracteristicas">
+          <ScalarProperty Name="id_caract" ColumnName="id_caract" />
+          <ScalarProperty Name="nom_caract" ColumnName="nom_caract" />
+          <ScalarProperty Name="und_medida" ColumnName="und_medida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dominios">
+      <EntityTypeMapping TypeName="controlequiposModel.dominios">
+        <MappingFragment StoreEntitySet="dominios">
+          <ScalarProperty Name="tipo_dominio" ColumnName="tipo_dominio" />
+          <ScalarProperty Name="id_dominio" ColumnName="id_dominio" />
+          <ScalarProperty Name="vlr_dominio" ColumnName="vlr_dominio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipos">
+      <EntityTypeMapping TypeName="controlequiposModel.equipos">
+        <MappingFragment StoreEntitySet="equipos">
+          <ScalarProperty Name="serial_equipo" ColumnName="serial_equipo" />
+          <ScalarProperty Name="nro_equipo" ColumnName="nro_equipo" />
+          <ScalarProperty Name="tipo_equipo" ColumnName="tipo_equipo" />
+          <ScalarProperty Name="id_marca" ColumnName="id_marca" />
+          <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marcas">
+      <EntityTypeMapping TypeName="controlequiposModel.marcas">
+        <MappingFragment StoreEntitySet="marcas">
+          <ScalarProperty Name="id_marca" ColumnName="id_marca" />
+          <ScalarProperty Name="nom_marca" ColumnName="nom_marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perifericos">
+      <EntityTypeMapping TypeName="controlequiposModel.perifericos">
+        <MappingFragment StoreEntitySet="perifericos">
+          <ScalarProperty Name="serial_perif" ColumnName="serial_perif" />
+          <ScalarProperty Name="tipo_perif" ColumnName="tipo_perif" />
+          <ScalarProperty Name="serial_equipo" ColumnName="serial_equipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personas">
+      <EntityTypeMapping TypeName="controlequiposModel.personas">
+        <MappingFragment StoreEntitySet="personas">
+          <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+          <ScalarProperty Name="ape_persona" ColumnName="ape_persona" />
+          <ScalarProperty Name="nom_persona" ColumnName="nom_persona" />
+          <ScalarProperty Name="tel_persona" ColumnName="tel_persona" />
+          <ScalarProperty Name="email_persona" ColumnName="email_persona" />
+          <ScalarProperty Name="tipo_persona" ColumnName="tipo_persona" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="salas">
+      <EntityTypeMapping TypeName="controlequiposModel.salas">
+        <MappingFragment StoreEntitySet="salas">
+          <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+          <ScalarProperty Name="nom_sala" ColumnName="nom_sala" />
+          <ScalarProperty Name="piso" ColumnName="piso" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="software">
+      <EntityTypeMapping TypeName="controlequiposModel.software">
+        <MappingFragment StoreEntitySet="software">
+          <ScalarProperty Name="id_software" ColumnName="id_software" />
+          <ScalarProperty Name="nom_software" ColumnName="nom_software" />
+          <ScalarProperty Name="cod_licencia" ColumnName="cod_licencia" />
+          <ScalarProperty Name="tipo_licencia" ColumnName="tipo_licencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="solicitudes">
+      <EntityTypeMapping TypeName="controlequiposModel.solicitudes">
+        <MappingFragment StoreEntitySet="solicitudes">
+          <ScalarProperty Name="nro_solicitud" ColumnName="nro_solicitud" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="fecha_atencion" ColumnName="fecha_atencion" />
+          <ScalarProperty Name="fecha_cierre" ColumnName="fecha_cierre" />
+          <ScalarProperty Name="obs_solicitud" ColumnName="obs_solicitud" />
+          <ScalarProperty Name="tipo_solicitud" ColumnName="tipo_solicitud" />
+          <ScalarProperty Name="id_persona_sol" ColumnName="id_persona_sol" />
+          <ScalarProperty Name="id_persona_ati" ColumnName="id_persona_ati" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipos_caract">
+      <EntityTypeMapping TypeName="controlequiposModel.equipos_caract">
+        <MappingFragment StoreEntitySet="equipos_caract">
+          <ScalarProperty Name="serial_equipo" ColumnName="serial_equipo" />
+          <ScalarProperty Name="id_caract" ColumnName="id_caract" />
+          <ScalarProperty Name="valor_desc" ColumnName="valor_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipos_software">
+      <EntityTypeMapping TypeName="controlequiposModel.equipos_software">
+        <MappingFragment StoreEntitySet="equipos_software">
+          <ScalarProperty Name="serial_equipo" ColumnName="serial_equipo" />
+          <ScalarProperty Name="id_software" ColumnName="id_software" />
+          <ScalarProperty Name="version_software" ColumnName="version_software" />
+          <ScalarProperty Name="vigencia" ColumnName="vigencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="solicitud_equipo">
+      <EntityTypeMapping TypeName="controlequiposModel.solicitud_equipo">
+        <MappingFragment StoreEntitySet="solicitud_equipo">
+          <ScalarProperty Name="serial_equipo" ColumnName="serial_equipo" />
+          <ScalarProperty Name="nro_solicitud" ColumnName="nro_solicitud" />
+          <ScalarProperty Name="det_solicitud" ColumnName="det_solicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
